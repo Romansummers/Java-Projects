@@ -1,0 +1,211 @@
+<!--Javascript for this particular assignment has been embedded and used inline-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8" name="viewport" content="width=device-width" />
+   <title>Art for the Artist</title>
+   <link rel="stylesheet" href="Assignment4.css">
+   <style>
+		#wrapper {
+			width: 980px;
+			margin: 0 auto;
+		}
+		
+		#header {
+			font-size: 200%;
+			color: white;
+			font-weight: bold;
+			text-align: center;
+			background-color: blue;
+		}
+		
+		legend {
+			font-weight: bold;
+		}
+		
+		#column-left {
+			width: 250px;
+			float: left;
+		}
+		
+		#column-center {
+			width: 480px;
+			float: left;
+		}
+		
+		#column-right {
+			width: 250px;
+			margin: left;
+			float: left;
+		}
+		
+		#footer {
+			clear: both;
+			background-color: blue;
+		}
+		
+		input:focus {background-color: yellow;
+		}
+		
+		.required:invalid {
+			background: red;
+		}
+   </style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="header">Survery for the Arts</div>
+		<div id="column-left">
+		
+		  <!--alerts the user when the mouse is over the Directory title-->
+		  <h1 id="dir" onmouseover="javascript:alert('This is the directory, let it guide you!');">Directory</h1>
+		  <nav>
+			<ul>
+			  <li><a href="Assignment3Shikov.html">What is Art?</a></li>
+			  <li><a href="Assignment3Shikov.html">The Visual Art</a></li>
+			  <li><a href="Assignment3Shikov.html">Our other Art Friends</a></li>
+			  <li><a href="Assignment3Shikov.html">Information about Site</a></li>
+			  <li><a href="Assign3Form.html">Survey for Art (form)</a></li>
+			  <li><a href="Assignment3.css">External Style Sheet</a></li>
+			</ul> 
+		  </nav>
+		 </div>
+		 
+		 <script type="text/javascript">
+			<!--Checks to see if the required fields have been entered-->
+			function validateForm() 
+			{
+				var participant = document.forms["mainform"]["name"].value;
+				var pass = document.forms["mainform"]["pass"].value;
+				var participant = document.forms["mainform"]["name"].value;
+				if (participant==null || participant=="", pass==null || pass=="")
+				{
+					alert("Please fill in all the required fields");
+					return false;
+				}
+			}
+			
+			<!--This function checks to see if at least one checkbox is checked-->
+			function CheckForm()
+			{
+				var checked=false;
+				var elements = document.getElementsByName('box[]');
+				for(var i=0; i < elements.length; i++){
+					if(elements[i].checked)
+					{
+						checked = true;
+					}
+				}
+				if (!checked) 
+				{
+					alert('Please check at least on box, thank you.');
+				}
+				return checked;
+			}
+			
+			<!--This function displays the date the form was submitted-->
+			function displayTheDate() 
+			{
+				var d = new Date();
+				alert("You submitted this on " + d.toString());
+			}
+
+			<!--Stops execution if an error is detected-->
+			try 
+			{
+				nonexistantfunction("hello");
+			}
+			catch(err) 
+			{
+				alert("An exception was caught:" + err);
+			}
+			
+		 </script>
+		<div id="column-center">
+		<form onsubmit="return validateForm() || CheckForm()" id="mainform" 
+			method="post" action="http://www.randyconnolly.com/tests/process.php">
+			<fieldset>
+				<legend>Questions for your answers</legend>
+				<p>
+					<label>Participant Name: </label>
+					<input type="text" class="required" name="name" id="participant" />
+				</p>
+				
+				<p>
+					<label>Password of Your Choosing</label>
+					<input type="password" class="required" name="pass" id="pass" >
+				</p>
+				
+				<p>
+					<label>Describe Your Art History: </label>
+					<textarea>
+						Enter here
+					</textarea>
+				</p>
+				
+				<p>
+				<div id="check">
+					<label>Types of Art that Interest You?</label>
+					<input type="checkbox" name="box[]">Abstract<br/>
+					<input type="checkbox" name="box[]">Painting<br/>
+					<input type="checkbox" name="box[]">Photography<br/>
+					<input type="checkbox" name="box[]">Graffiti<br/>
+					<input type="checkbox" name="box[]">Tapestry<br/>
+					<input type="checkbox" name="box[]">Other<br/>
+				</div>
+				</p>
+				
+				<p>
+					<label>From 1-5 How much has art impacted you?: </label>
+					<input type="radio" name="type"/>1
+					<input type="radio" name="type"/>2
+					<input type="radio" name="type"/>3
+					<input type="radio" name="type"/>4
+					<input type="radio" name="type"/>5
+				</p>
+				
+				<p>
+					<label>Select Your Favorite Form of Expression</label>
+					<select name="choices">
+						<option value="Music">Music</option>
+						<option value="Music">Drawing</option>
+						<option value="Music">Dance</option>
+						<option value="Music">Write</option>
+						<option value="Music">Living</option>
+						<option value="Music">Other</option>
+					</select>
+				</p>
+				
+				<p>
+					<label>Email: </label>
+					<input type="email" id="email"/>
+				</p>
+				
+				<p>
+					<label>What day is it? </label>
+					<input type="date" name="date" />
+				</p>
+				
+				<!--Notifys user of final submission result-->
+				<input type="submit" name="submit" id="sub" onclick="return confirm('Are you sure you want to submit this?') & displayTheDate()" />
+				<input type="reset" />
+			</fieldset>
+		</form>
+		</div>
+		<div id="column-right">
+			<aside id="extra">
+				<p>This is a test to see how well the artist can design his page to the best of his abilities. 
+					On the left we have the directory which will take you back if this is not the page for you.
+					In the center is the main attraction of this page: the survey. Take a minute and answer these 
+					questions to the best of your ability, and don't rush! This third and final column is 
+					being utilized to explain all the facets to this form page (how splendid!).</p>
+			</aside>
+		</div>
+		<div id="footer">
+			<footer>
+				<p><em>Copyright &copy; 2017 Art for the Artist</em></p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
